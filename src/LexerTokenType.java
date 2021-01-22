@@ -3,11 +3,11 @@ public enum LexerTokenType {
      * Represent the tokens of the Scanner and Screener outputs
      * Used as a sequence for parser input
      */
-    IDENTIFIER("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"),
-    INTEGER("0123456789"),
+    IDENTIFIER("<identifier>"),
+    INTEGER("integer"),
     WHITE_SPACE(" "),
-    CHAR,
-    STRING,
+    CHAR("<char>"),
+    STRING("<string>"),
     BLOCK_COMMENT,
     INLINE_COMMENT,
     NEWLINE("\n"),                //  \n

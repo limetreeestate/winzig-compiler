@@ -67,8 +67,9 @@ public class Lexer {
                 case IDENTIFIER:
                     int newPos = getSequenceEnd(program.substring(pos), pos);
 
-                    tokenType.val = program.substring(pos, newPos);
-                    scannerTokens.add(new LexerToken(tokenType));
+                    LexerToken token = new LexerToken(tokenType);
+                    token.value = program.substring(pos, newPos);
+                    scannerTokens.add(token);
                     pos = newPos;
                     break;
 
@@ -77,16 +78,18 @@ public class Lexer {
                     int alphaPos = getAlphaPos(program.substring(pos), pos);
                     newPos = Math.min(newPos, alphaPos);
 
-                    tokenType.val = program.substring(pos, newPos);
-                    scannerTokens.add(new LexerToken(tokenType));
+                    token = new LexerToken(tokenType);
+                    token.value = program.substring(pos, newPos);
+                    scannerTokens.add(token);
                     pos = newPos;
                     break;
 
                 case BLOCK_COMMENT:
                     newPos = program.indexOf(LexerTokenType.BLOCK_END.val, pos) + 1;
 
-                    tokenType.val = program.substring(pos, newPos);
-                    scannerTokens.add(new LexerToken(tokenType));
+                    token = new LexerToken(tokenType);
+                    token.value = program.substring(pos, newPos);
+                    scannerTokens.add(token);
                     pos = newPos;
                     break;
                 case CHAR:
@@ -94,7 +97,7 @@ public class Lexer {
                     if (newPos - pos > 3)
                         throw new Exception("Wrong char length");
 
-                    LexerToken token = new LexerToken(tokenType);
+                    token = new LexerToken(tokenType);
                     token.value = program.substring(pos+1, newPos-1);
                     scannerTokens.add(token);
                     pos = newPos;
