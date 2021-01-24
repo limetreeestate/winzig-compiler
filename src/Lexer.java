@@ -203,7 +203,7 @@ public class Lexer {
     private int getSequenceEnd(String source, int pos) {
         for (int i = 0; i < program.length(); i++) {
             String s = source.substring(i, i+1);
-            if (s.matches("[\\s!:.;@#$%&*()_+=|<>?{}\\[\\]~-]")) {
+            if (s.matches("[\\s!:.,;@#$%&*()_+=|<>?{}\\[\\]~-]")) {
                 pos += i;
                 return pos;
             }
